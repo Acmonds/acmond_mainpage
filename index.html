@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT on Web</title>
+    <style>
+        /* CSS 样式 */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .chatlog {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .input-container {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>dont tell others due to this web contain API code</h1>
+
+        <div class="chatlog" id="chatlog"></div>
+
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="ni yao shuo de..." autocomplete="off">
+            <input type="submit" value="fa she" onclick="sendMessage()">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript 代码
+        const chatlogElement = document.getElementById("chatlog");
+        const userInputElement = document.getElementById("user-input");
+
+        function appendMessage(message, sender) {
+            const messageElement = document.createElement("p");
+            messageElement.textContent = `${sender}: ${message}`;
+            chatlogElement.appendChild(messageElement);
+        }
+
+        function sendMessage() {
+            const userMessage = userInputElement.value.trim();
+            if (userMessage !== "") {
+                appendMessage(userMessage, "nora");
+                userInputElement.value = "";
+
+                // 向 ChatGPT API 发送请求
+                const apiUrl = "https://api.openai.com/v1/chat/completions"; // ChatGPT API 端点
+
+                fetch(apiUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer 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" // 替换为你的 API 密钥
+                    },
+                    body: JSON.stringify({
+                        "model": "gpt-3.5-turbo",
+                        "messages": [
+                            {"role": "system", "content": "I am a professional in the medical field, especially in the field of public health. Please answer my questions in professional terms"},
+                            {"role": "user", "content": userMessage}
+                        ]
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const modelResponse = data.choices[0].message.content;
+                    appendMessage(modelResponse, "ChatGPT");
+                })
+                .catch(error => {
+                    console.error("请求出错:", error);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
