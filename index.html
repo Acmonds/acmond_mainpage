@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <head>
     <title>ChatGPT on Web</title>
     <style>
@@ -37,6 +38,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>dont tell others due to this web contain API code</h1>
@@ -78,21 +80,22 @@
                     body: JSON.stringify({
                         "model": "gpt-3.5-turbo",
                         "messages": [
-                            {"role": "system", "content": ""},
-                            {"role": "user", "content": userMessage}
+                            { "role": "system", "content": "" },
+                            { "role": "user", "content": userMessage }
                         ]
                     })
                 })
-                .then(response => response.json())
-                .then(data => {
-                    const modelResponse = data.choices[0].message.content;
-                    appendMessage(modelResponse, "ChatGPT");
-                })
-                .catch(error => {
-                    console.error("请求出错:", error);
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        const modelResponse = data.choices[0].message.content;
+                        appendMessage(modelResponse, "ChatGPT");
+                    })
+                    .catch(error => {
+                        console.error("请求出错:", error);
+                    });
             }
         }
     </script>
 </body>
+
 </html>
