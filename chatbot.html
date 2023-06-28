@@ -6,42 +6,70 @@
     <title>ChatGPT on Web</title>
     <style>
         /* CSS 样式 */
+        #animationContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
         .container {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 50px auto; /* Increase top/bottom margin for some breathing space */
             padding: 20px;
             border: 1px solid #ccc;
+            border-radius: 15px; /* Add border radius for rounded corners */
+            opacity: 1;
+            background-color: #f2f2f2;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.15); /* Add a subtle box shadow */
         }
-
+    
         .chatlog {
             height: 300px;
             overflow-y: scroll;
             border: 1px solid #ccc;
             padding: 10px;
+            border-radius: 10px; /* Add border radius for rounded corners */
+            opacity: 1;
         }
-
+    
         .input-container {
             margin-top: 20px;
         }
-
+    
         input[type="text"] {
             width: 80%;
             padding: 10px;
+            border-radius: 5px; /* Add border radius for rounded corners */
         }
-
+    
         input[type="submit"] {
             padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
+            border-radius: 5px; /* Add border radius for rounded corners */
+            transition: background-color 0.3s ease; /* Add a transition for hover effect */
+        }
+    
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Darken the button slightly when hovered */
         }
     </style>
+    
+    <meta name="author" content="acmond">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" type="text/css" href="style/css/main.css">
 </head>
 
 <body>
+    
     <div class="container">
-        <h1>dont tell others due to this web contain API code</h1>
+        <h1>ChatGPT API的接口 目前支持连续对话 </h1>
 
         <div class="chatlog" id="chatlog"></div>
 
@@ -49,7 +77,10 @@
             <input type="text" id="user-input" placeholder="你要说的..." autocomplete="off">
             <input type="submit" value="发送" onclick="sendMessage()">
         </div>
+        <div id="animationContainer"></div>
     </div>
+    
+    
 
     <script>
         // JavaScript 代码
@@ -100,7 +131,8 @@
             }
         }
     </script>
-    
+<script type="text/javascript" src="style/js//background.js"></script>
+
 </body>
 
 </html>
