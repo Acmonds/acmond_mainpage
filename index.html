@@ -1,106 +1,63 @@
 <!DOCTYPE html>
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<html lang="zh-cmn-Hans">
 <head>
-    <title>ChatGPT on Web</title>
-    <style>
-        /* CSS 样式 */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
+    <meta charset="utf-8">
+    <title>Acmondの个人主页</title>
+    <meta name="author" content="acmond">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" type="text/css" href="style/css/main.css">
 
-        .chatlog {
-            height: 300px;
-            overflow-y: scroll;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        .input-container {
-            margin-top: 20px;
-        }
-
-        input[type="text"] {
-            width: 80%;
-            padding: 10px;
-        }
-
-        input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>dont tell others due to this web contain API code</h1>
 
-        <div class="chatlog" id="chatlog"></div>
+<div class="content-container">
+	<img class="avatar" src="https://acmond.blob.core.windows.net/img/108450181_p0.jpg"/>
+	<div class="text part1">
+		<div>
+			<span class="letter"><div class="character">A</div> <span></span></span>
+			<span class="letter"><div class="character">c</div> <span></span></span>
+			<span class="letter"><div class="character">m</div> <span></span></span>
+			<span class="letter"><div class="character">o</div> <span></span></span>
+			<span class="letter"><div class="character">n</div> <span></span></span>
+			<span class="letter"><div class="character">d</div> <span></span></span>
+		</div>
+	</div>    
+	<span class="bio">
+        <span style="transition-delay:2s" class="emphasis">我</span>
+        <span style="transition-delay:.5s">喜欢</span>
+        <span style="transition-delay:1s">天空</span>
+        <span style="transition-delay:1.5s">的</span>
+        <span style="transition-delay:2s">颜色</span>
+        <span style="transition-delay:2.5s">风</span>
+        <span style="transition-delay:3s">的</span>
+        <span style="transition-delay:3.5s">味道</span>
+		<span style="transition-delay:4s">大海</span>
+        <span style="transition-delay:4.5s">的</span>
+        <span style="transition-delay:5s">深度</span>
+		<span style="transition-delay:5.5s">和</span>
+		<span style="transition-delay:6s"  class="emphasis">你</span>
+		<span style="transition-delay:6.5s">的</span>
+		<span style="transition-delay:7s">声音.</span>
+    </span>
+    <ul>
+		<li>
+			<a href="chatbot.html" target="_blank">
+				<img width="50px" src="https://cdn.cdnlogo.com/logos/c/38/ChatGPT.svg"/>
+			</a>
+		</li>
+		<li>
+			<a href="mailto:me@acmond.com?subject=来自个人页" target="_blank">
+				<img width="50px" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSItMSAwIDQ5OCA0OTguNTg0IiB3aWR0aD0iNTEycHgiPjxwYXRoIGQ9Im0yNDguMjkyOTY5IDAtMjQ4IDIxNC45Mjk2ODh2MjgzLjY1NjI1aDQ5NnYtMjgzLjY1NjI1em0tNjkuNDY0ODQ0IDM2Mi4xOTkyMTktMTYyLjUzNTE1NiAxMTMuMDc0MjE5di0yNDAuMjczNDM4em0xODEuNDY0ODQ0LTUzLjU5NzY1Ny01OC43NjE3MTkgNDUuOTg0Mzc2aC0xMDYuNDgwNDY5bC01OC43NTc4MTItNDUuOTg0Mzc2di0xNDYuMDE1NjI0aDIyNHptLTE2NS40ODgyODEgNjEuOTg0Mzc2aDEwNi45Njg3NWwxNjEgMTEyaC00MjguOTY4NzV6bTEyMi45NTMxMjQtOC4zODY3MTkgMTYyLjUzNTE1Ny0xMjcuMTk5MjE5djI0MC4yNzM0Mzh6bTE1Ny45NTcwMzItMTQzLjkyNTc4MS05OS40MjE4NzUgNzcuODA0Njg3di0xNDkuNDkyMTg3aC0yNTZ2MTQ5LjQ5MjE4N2wtOTkuNDI1NzgxLTc3LjgwNDY4NyAyMjcuNDI1NzgxLTE5Ny4xMDU0Njl6bTAgMCIgZmlsbD0iIzAwMDAwMCIvPjxwYXRoIGQ9Im0xNTIuMjkyOTY5IDE3OC41ODU5MzhoMTkydjE2aC0xOTJ6bTAgMCIgZmlsbD0iIzAwMDAwMCIvPjxwYXRoIGQ9Im0xNTIuMjkyOTY5IDIxMC41ODU5MzhoMzJ2MTZoLTMyem0wIDAiIGZpbGw9IiMwMDAwMDAiLz48cGF0aCBkPSJtMjAwLjI5Mjk2OSAyMTAuNTg1OTM4aDE0NHYxNmgtMTQ0em0wIDAiIGZpbGw9IiMwMDAwMDAiLz48cGF0aCBkPSJtMTUyLjI5Mjk2OSAyNDIuNTg1OTM4aDE5MnYxNmgtMTkyem0wIDAiIGZpbGw9IiMwMDAwMDAiLz48cGF0aCBkPSJtMTUyLjI5Mjk2OSAyNzQuNTg1OTM4aDE2MHYxNmgtMTYwem0wIDAiIGZpbGw9IiMwMDAwMDAiLz48cGF0aCBkPSJtMzI4LjI5Mjk2OSAyNzQuNTg1OTM4aDE2djE2aC0xNnptMCAwIiBmaWxsPSIjMDAwMDAwIi8+PHBhdGggZD0ibTE5Mi4yOTI5NjkgMzA2LjU4NTkzOGgxMTJ2MTZoLTExMnptMCAwIiBmaWxsPSIjMDAwMDAwIi8+PC9zdmc+Cg=="/>
+			</a>
+		</li>
 
-        <div class="input-container">
-            <input type="text" id="user-input" placeholder="你要说的..." autocomplete="off">
-            <input type="submit" value="发送" onclick="sendMessage()">
-        </div>
-    </div>
-
-    <script>
-        // JavaScript 代码
-        const chatlogElement = document.getElementById("chatlog");
-        const userInputElement = document.getElementById("user-input");
-    
-        let messages = [
-            { "role": "system", "content": "Chat session initiated with GPT-3" }
-        ]; // 在这里初始化对话历史
-    
-        function appendMessage(message, sender) {
-            const messageElement = document.createElement("p");
-            messageElement.textContent = `${sender}: ${message}`;
-            chatlogElement.appendChild(messageElement);
-        }
-    
-        function sendMessage() {
-            const userMessage = userInputElement.value.trim();
-            if (userMessage !== "") {
-                appendMessage(userMessage, "用户");
-                userInputElement.value = "";
-    
-                messages.push({ "role": "user", "content": userMessage }); // 添加新的用户消息到对话历史
-    
-                // 向 ChatGPT API 发送请求
-                const apiUrl = "https://api.openai-forward.com/v1/chat/completions"; // ChatGPT API 端点
-    
-                fetch(apiUrl, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": "Bearer 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" // 替换为你的 API 密钥
-                    },
-                    body: JSON.stringify({
-                        "model": "gpt-3.5-turbo",
-                        "messages": messages // 在这里传入整个对话历史
-                    })
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        const modelResponse = data.choices[0].message.content;
-                        appendMessage(modelResponse, "ChatGPT");
-                        messages.push({ "role": "assistant", "content": modelResponse }); // 添加模型的回应到对话历史
-                    })
-                    .catch(error => {
-                        console.error("请求出错:", error);
-                    });
-            }
-        }
-    </script>
-    
+    </ul>
+</div>
+<div class="footer">
+  <a target="_self"rel="nofollow">&copy; 2023</a>
+</div>
+<script type="text/javascript" src="style/js//main.js"></script>
 </body>
-
 </html>
