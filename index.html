@@ -55,22 +55,28 @@
         // JavaScript 代码
         const chatlogElement = document.getElementById("chatlog");
         const userInputElement = document.getElementById("user-input");
-
+    
+        let messages = [
+            { "role": "system", "content": "Chat session initiated with GPT-3" }
+        ]; // 在这里初始化对话历史
+    
         function appendMessage(message, sender) {
             const messageElement = document.createElement("p");
             messageElement.textContent = `${sender}: ${message}`;
             chatlogElement.appendChild(messageElement);
         }
-
+    
         function sendMessage() {
             const userMessage = userInputElement.value.trim();
             if (userMessage !== "") {
                 appendMessage(userMessage, "用户");
                 userInputElement.value = "";
-
+    
+                messages.push({ "role": "user", "content": userMessage }); // 添加新的用户消息到对话历史
+    
                 // 向 ChatGPT API 发送请求
                 const apiUrl = "https://api.openai-forward.com/v1/chat/completions"; // ChatGPT API 端点
-
+    
                 fetch(apiUrl, {
                     method: "POST",
                     headers: {
@@ -79,16 +85,14 @@
                     },
                     body: JSON.stringify({
                         "model": "gpt-3.5-turbo",
-                        "messages": [
-                            { "role": "system", "content": "" },
-                            { "role": "user", "content": userMessage }
-                        ]
+                        "messages": messages // 在这里传入整个对话历史
                     })
                 })
                     .then(response => response.json())
                     .then(data => {
                         const modelResponse = data.choices[0].message.content;
                         appendMessage(modelResponse, "ChatGPT");
+                        messages.push({ "role": "assistant", "content": modelResponse }); // 添加模型的回应到对话历史
                     })
                     .catch(error => {
                         console.error("请求出错:", error);
@@ -96,6 +100,7 @@
             }
         }
     </script>
+    
 </body>
 
 </html>
