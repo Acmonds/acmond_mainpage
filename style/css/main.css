@@ -71,6 +71,7 @@ a {
 }
 
 .content-container {
+	transform: scale(1); 
 	position: relative;
 	text-align: center;
 }
@@ -1353,4 +1354,39 @@ a {
 	100% {
 		opacity: 0;
 	}
+}
+@media (max-width: 320px) {
+	/* iPhone 5/SE */
+	.content-container {
+		transform: scale(0.5); 
+	}
+}
+
+@media (max-width: 375px) {
+	/* iPhone 6/7/8/X/11 Pro */
+	.content-container {
+		transform: scale(0.7); 
+	}
+}
+
+@media (max-width: 414px) {
+	/* iPhone 6/7/8 Plus/XS Max/11 Pro Max*/
+	.content-container {
+		transform: scale(0.8); 
+	}
+}
+
+@media (max-width: 844px) {
+	/* iPad 11inch*/
+}
+
+@media (max-width: 1024px) {
+	/* iPad 12.9inch */
+}
+
+@media (min-width: 1025px) {
+	.content-container {
+		transform: scale(1.2); 
+	}
+
 }
